@@ -1,7 +1,7 @@
 local palette = require('indomitable.palette')
 return {
   Normal = { fg = palette.foreground, bg = palette.background },
-  Pmenu = { fg = palette.foreground }, --, bg = palette.line_highlight },
+  Pmenu = { fg = palette.foreground },
 
   Foreground = { fg = palette.foreground },
   Identifier = { link = 'Foreground' },
@@ -36,7 +36,6 @@ return {
   ['@tag'] = { link = 'Statement' },
   ['xmlTagName'] = { link = 'Statement' },
   ['@type.css'] = { link = 'Statement' },
-  ['@type.definition.css'] = { link = 'Statement' },
   ['@type.scss'] = { link = 'Statement' },
   ['@type.qualifier'] = { link = 'Statement' },
   ['@text.title.1.markdown'] = { link = 'Statement' },
@@ -96,6 +95,7 @@ return {
   ['@constant'] = { link = 'Special' },
   ['@lsp.type.builtin.zig'] = { link = 'Special' },
   ['@lsp.typemod.variable.constant'] = { link = 'Special' },
+  ['@type.definition.css'] = { link = 'Statement' }, -- This should be linked to 'Special' but css highlighting isn't very good
 
   -- editor
   CursorLine = { bg = palette.line_highlight },
@@ -115,8 +115,8 @@ return {
   DiagnosticOk = { fg = palette.inserted },
   DiagnosticHint = { fg = palette.constants },
   DiagnosticInfo = { fg = palette.foreground },
-  DiagnosticWarn = { fg = palette.changed }, --, bg = palette.line_highlight },
-  DiagnosticError = { fg = palette.deleted }, --, bg = palette.line_highlight },
+  DiagnosticWarn = { fg = palette.changed },
+  DiagnosticError = { fg = palette.deleted },
   DiagnosticUnnecessary = { fg = palette.foreground, bg = palette.comments },
 
   DiagnosticUnderlineOk =  { bg = palette.inserted, fg = 'Black', bold = true },
