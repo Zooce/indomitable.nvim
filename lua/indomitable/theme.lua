@@ -12,6 +12,7 @@ return {
   RedrawDebugClear = { fg = 'Black', bg = 'Yellow' },
   Search = { fg = palette.line_highlight, bg = palette.constants },
   IncSearch = { link = 'Search' },
+  Whitespace = { fg = palette.punctuation_dimmer },
 
   Underlined = { fg = palette.foreground, underline = true },
 
@@ -131,17 +132,13 @@ return {
   DiffDelete = { fg = palette.deleted, },
   DiffText = { fg = palette.foreground, },
 
-  -- indent blank line plugin
-  IndentBlanklineChar = { fg = palette.punctuation_dimmer },
-  IndentBlanklineSpaceChar = { fg = palette.punctuation_dimmer },
-  IndentBlanklineSpaceCharBlankline = { fg = palette.punctuation_dimmer },
-  IndentBlanklineContextChar = { fg = palette.punctuation_dim },
-  IndentBlanklineContextStart = { fg = palette.punctuation_dim },
-
   -- mason plugin
   MasonHeader = { fg = palette.foreground, bg = palette.keywords },
   MasonHighlight = { fg = palette.functions },
   MasonMutedBlock = { fg = palette.foreground, bg = palette.punctuation_dim },
+
+  -- lspconfig plugin
+  LspInfoBorder = { link = 'Normal' },
 }
 
 -- vim: ts=2 sts=2 sw=2 et
