@@ -1,7 +1,9 @@
 local theme = require('indomitable.theme')
+require('indomitable.ini').load(theme)
 require('indomitable.md').load(theme)
 require('indomitable.rust').load(theme)
 require('indomitable.toml').load(theme)
+
 local M = {}
 
 function M.load()
