@@ -1,144 +1,197 @@
 local palette = require('indomitable.palette')
-return {
-  Normal = { fg = palette.foreground, bg = palette.background },
-  Pmenu = { fg = palette.foreground },
+local M = {}
 
-  Foreground = { fg = palette.foreground },
-  Identifier = { link = 'Foreground' },
-  Type = { link = 'Foreground' },
-  Title = { link = 'Foreground' },
-  ['@lsp.typemod.type'] = { link = 'Foreground' },
-  NvimInternalError = { link = 'Error' },
-  RedrawDebugClear = { fg = 'Black', bg = 'Yellow' },
-  Search = { fg = palette.line_highlight, bg = palette.constants },
-  IncSearch = { link = 'Search' },
-  Whitespace = { fg = palette.punctuation_dimmer },
+M.spec = {
+  --
+  -- Base highlight groups
+  --
+  Normal = {
+    hl = { fg = palette.foreground, bg = palette.background },
+    links = {
+      'LspInfoBorder',
+    }
+  },
+  Foreground = {
+    hl = { fg = palette.foreground },
+    links = {
+      'Identifier',
+      'Type',
+      'Title',
+      '@lsp.typemod.type',
+      -- '@lsp.typemod.variable.local',
+    },
+  },
+  Search = {
+    hl = { fg = palette.line_highlight, bg = palette.constants },
+    links = {
+      'IncSearch',
+    },
+  },
+  Whitespace = {
+    hl = { fg = palette.punctuation_dimmer },
+  },
+  Underlined = {
+    hl = { fg = palette.foreground, underline = true },
+  },
+  Todo = {
+    hl = { fg = palette.line_highlight, bg = palette.foreground, bold = true },
+    links = {
+      '@text.todo',
+    },
+  },
+  NonText = { hl = { fg = palette.punctuation_dim } },
+  ['@text.uri'] = {
+    hl = { fg = palette.strings, underline = true },
+  },
 
-  Underlined = { fg = palette.foreground, underline = true },
+  --
+  -- Editor theme highlight groups
+  --
+  CursorLine = { hl = { bg = palette.line_highlight } },
+  CursorLineNr = { hl = { link = 'CursorLine', bold = true } },
+  CursorColumn = { hl = { bg = palette.punctuation_dimmer } },
+  ColorColumn = { hl = { bg = palette.punctuation_dimmer } },
+  SignColumn = { hl = { link = 'Normal' } },
+  LineNr = { hl = { fg = palette.punctuation_dim } },
+  Visual = { hl = { bg = palette.selection } },
+  VisualNC = { hl = { bg = palette.selection_dim } },
+  MatchParen = { hl = { fg = palette.line_highlight, bg = palette.inserted, sp = palette.inserted, bold = true, underline = true, reverse = true, standout = true } },
+  StatusLine = { hl = { fg = 'White', bg = palette.punctuation_dimmer } },
+  Folded = { hl = { bg = palette.punctuation_dimmer } },
+  WarningMsg = { hl = { fg = palette.deleted } },
+  DiffAdd = { hl = { fg = palette.inserted, } },
+  DiffChange = { hl = { fg = palette.changed, } },
+  DiffDelete = { hl = { fg = palette.deleted, } },
+  DiffText = { hl = { fg = palette.foreground, } },
+  Pmenu = {
+    hl = { fg = palette.foreground },
+  },
 
-  -- punctuation
-  Punctuation = { fg = palette.punctuation },
-  Conceal = { link = 'Punctuation' },
-  ['@punctuation'] = { link = 'Punctuation' },
-  ['@attribute'] = { link = 'Punctuation' },
-  ['@tag.delimiter'] = { link = 'Punctuation' },
-  ['xmlTag'] = { link = 'Punctuation' },
-  ['xmlProcessingDelim'] = { link = 'Punctuation' },
-  ['@constructor.lua'] = { link = 'Punctuation' },
-  ['@keyword.jsdoc'] = { link = 'Punctuation' },
-
-  -- keywords
-  Statement = { fg = palette.keywords },
-  StorageClass = { link = 'Statement' },
-  PreProc = { link = 'Statement' },
-  ['@include'] = { link = 'Statement' },
-  ['@type.builtin'] = { link = 'Statement' },
-  ['@type.toml'] = { link = 'Statement' },
-  ['@tag'] = { link = 'Statement' },
-  ['xmlTagName'] = { link = 'Statement' },
-  ['@type.css'] = { link = 'Statement' },
-  ['@type.scss'] = { link = 'Statement' },
-  ['@type.qualifier'] = { link = 'Statement' },
-  ['@text.title.1.markdown'] = { link = 'Statement' },
-  ['@text.title.2.markdown'] = { link = 'Statement' },
-  ['@text.title.3.markdown'] = { link = 'Statement' },
-  ['@text.title.4.markdown'] = { link = 'Statement' },
-  ['@text.title.5.markdown'] = { link = 'Statement' },
-  ['@text.title.6.markdown'] = { link = 'Statement' },
-  ['@text.title.1.marker.markdown'] = { link = 'Statement' },
-  ['@text.title.2.marker.markdown'] = { link = 'Statement' },
-  ['@text.title.3.marker.markdown'] = { link = 'Statement' },
-  ['@text.title.4.marker.markdown'] = { link = 'Statement' },
-  ['@text.title.5.marker.markdown'] = { link = 'Statement' },
-  ['@text.title.6.marker.markdown'] = { link = 'Statement' },
-  ['@lsp.type.keyword'] = { link = 'Statement' },
-  ['@lsp.type.operator'] = { link = 'Statement' },
-  ['@lsp.type.type.zig'] = { link = 'Statement' },
-  ['@lsp.type.keywordLiteral.zig'] = { link = 'Statement' },
-
-  -- functions
-  Function = { fg = palette.functions },
-  ['@constructor'] = { link = 'Function' },
-  ['@function.builtin'] = { link = 'Function' },
-  ['@function.call'] = { link = 'Function' },
-  ['@tag.attribute'] = { link = 'Function' },
-  ['xmlAttrib'] = { link = 'Function' },
-  ['@text.reference.markdown_inline'] = { link = 'Function' },
-  helpHyperTextJump = { link = 'Function' },
-  -- FIXME: css treesitter parser needs some updates: https://github.com/nvim-treesitter/nvim-treesitter/pull/4585
-
-  -- strings
-  String = { fg = palette.strings },
-  ['@text.quote'] = { link = 'String' },
-  ['@text.uri'] = { fg = palette.strings, underline = true },
-  ['@text.uri.markdown_inline'] = { fg = palette.strings, underline = true },
-
-  -- constants
-  Constant = { fg = palette.constants },
-  Macro = { link = 'Constant' },
-  ['@constant.builtin'] = { link = 'Constant' },
-  ['@function.macro'] = { link = 'Constant' },
-  ['@string.escape'] = { link = 'Constant' },
-  ['@variable.builtin'] = { link = 'Constant' },
-  ['@text.literal'] = { link = 'Constant' },
-  ['xmlEntity'] = { link = 'Constant' },
-  ['xmlEntityPunct'] = { link = 'Constant' },
-
-  -- comments
-  Comment = { fg = palette.comments },
-  ['@string.documentation'] = { link = 'Comment' },
-  ['@text.reference.markdown'] = { link = 'Comment' },
-  Todo = { fg = palette.line_highlight, bg = palette.foreground, bold = true },
-  ['@text.todo'] = { link = 'Todo' },
-
-  -- other
-  Special = { fg = palette.other },
-  ['@constant'] = { link = 'Special' },
-  ['@lsp.type.builtin.zig'] = { link = 'Special' },
-  ['@lsp.typemod.variable.constant'] = { link = 'Special' },
-  ['@type.definition.css'] = { link = 'Statement' }, -- This should be linked to 'Special' but css highlighting isn't very good
-
-  -- editor
-  CursorLine = { bg = palette.line_highlight },
-  CursorLineNr = { link = 'CursorLine', bold = true },
-  CursorColumn = { bg = palette.punctuation_dimmer },
-  ColorColumn = { bg = palette.punctuation_dimmer },
-  SignColumn = { link = 'Normal' },
-  LineNr = { fg = palette.punctuation_dim },
-  Visual = { bg = palette.selection },
-  VisualNC = { bg = palette.selection_dim },
-  MatchParen = { fg = palette.line_highlight, bg = palette.inserted, sp = palette.inserted, bold = true, underline = true, reverse = true, standout = true },
-  StatusLine = { fg = 'White', bg = palette.punctuation_dimmer },
-  Folded = { bg = palette.punctuation_dimmer },
-  WarningMsg = { fg = palette.deleted },
-
-  -- diagnostics
-  DiagnosticOk = { fg = palette.inserted },
-  DiagnosticHint = { fg = palette.constants },
-  DiagnosticInfo = { fg = palette.foreground },
-  DiagnosticWarn = { fg = palette.changed },
-  DiagnosticError = { fg = palette.deleted },
-  DiagnosticUnnecessary = { fg = palette.foreground, bg = palette.comments },
-
-  DiagnosticUnderlineOk =  { bg = palette.inserted, fg = 'Black', bold = true },
-  DiagnosticUnderlineWarn = { bg = palette.changed, fg = 'Black', bold = true },
-  DiagnosticUnderlineError = { bg = palette.deleted, fg = 'White', bold = true },
-
-  NonText = { fg = palette.punctuation_dim },
-
-  -- sign column status
-  DiffAdd = { fg = palette.inserted, },
-  DiffChange = { fg = palette.changed, },
-  DiffDelete = { fg = palette.deleted, },
-  DiffText = { fg = palette.foreground, },
+  --
+  -- Diagnostics
+  --
+  DiagnosticOk = { hl = { fg = palette.inserted } },
+  DiagnosticHint = { hl = { fg = palette.constants } },
+  DiagnosticInfo = { hl = { fg = palette.foreground } },
+  DiagnosticWarn = { hl = { fg = palette.changed } },
+  DiagnosticError = { hl = { fg = palette.deleted } },
+  DiagnosticUnnecessary = { hl = { fg = palette.foreground, bg = palette.comments } },
+  DiagnosticUnderlineOk =  { hl = { bg = palette.inserted, fg = 'Black', bold = true } },
+  DiagnosticUnderlineWarn = { hl = { bg = palette.changed, fg = 'Black', bold = true } },
+  DiagnosticUnderlineError = { hl = { bg = palette.deleted, fg = 'White', bold = true } },
 
   -- mason plugin
-  MasonHeader = { fg = palette.foreground, bg = palette.keywords },
-  MasonHighlight = { fg = palette.functions },
-  MasonMutedBlock = { fg = palette.foreground, bg = palette.punctuation_dim },
+  MasonHeader = { hl = { fg = palette.foreground, bg = palette.keywords } },
+  MasonHighlight = { hl = { fg = palette.functions } },
+  MasonMutedBlock = { hl = { fg = palette.foreground, bg = palette.punctuation_dim } },
 
-  -- lspconfig plugin
-  LspInfoBorder = { link = 'Normal' },
+  --
+  -- Basic theme highlight groups
+  --
+  Punctuation = {
+    hl = { fg = palette.punctuation },
+    links = {
+      '@attribute',
+      '@constructor.lua',
+      '@keyword.jsdoc',
+      '@punctuation',
+      '@tag.delimiter',
+      '@conceal',
+      'Conceal',
+    },
+  },
+  Statement = {
+    hl = { fg = palette.keywords },
+    links = {
+      '@include',
+      '@lsp.type.keyword',
+      -- '@lsp.type.keywordLiteral.zig',
+      '@lsp.type.operator',
+      '@operator',
+      -- '@lsp.type.type.zig',
+      '@tag',
+      '@type.builtin',
+      -- '@type.css',
+      -- '@type.definition.css', -- FIXME: this should be linked to 'Special' but css highlighting isn't very good
+      '@type.qualifier',
+      -- '@type.scss',
+      'PreProc',
+      'StorageClass',
+    },
+  },
+  Function = {
+    hl = { fg = palette.functions },
+    links = {
+      '@constructor',
+      '@function.builtin',
+      '@function.call',
+      '@tag.attribute',
+    },
+  },
+  String = {
+    hl = { fg = palette.strings },
+    links = {
+      '@text.quote',
+    },
+  },
+  Constant = {
+    hl = { fg = palette.constants },
+    links = {
+      '@constant.builtin',
+      '@function.macro',
+      '@string.escape',
+      '@text.literal',
+      '@variable.builtin',
+      '@lsp.type.enumMember',
+      'Macro',
+    },
+  },
+  Comment = {
+    hl = { fg = palette.comments },
+    links = {
+      '@string.documentation',
+    },
+  },
+  Special = {
+    hl = { fg = palette.other },
+    links = {
+      '@constant',
+      -- '@lsp.type.builtin.zig',
+      '@lsp.typemod.variable.constant',
+      -- '@lsp.mod.readonly',
+      -- '@lsp.typemod.variable.readonly',
+    },
+  },
 }
 
--- vim: ts=2 sts=2 sw=2 et
+-- Loads any set of highlight group links. Ideally it is used like this:
+-- ```lua
+-- local theme = require('indomitable.theme')
+-- theme.load(theme.Normal.links, {
+--   '@lsp.type.attribute'
+-- })
+-- ```
+local function load(links, ftgrps)
+  for _, group in ipairs(ftgrps) do
+    table.insert(links, group)
+  end
+end
+
+function M.insert_links(group, links)
+  if M.spec[group] then
+    if M.spec[group].links == nil then
+      M.spec[group]['links'] = {}
+    end
+    load(M.spec[group].links, links)
+  else
+    vim.api.nvim_err_writeln('Highlight group ' .. group .. ' does not exist')
+  end
+end
+
+function M.load_links(links_table)
+  for group, links in pairs(links_table) do
+    M.insert_links(group, links)
+  end
+end
+
+return M

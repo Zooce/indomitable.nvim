@@ -9,8 +9,13 @@ function M.load()
   vim.o.background = 'dark'
   vim.g.colors_name = 'indomitable'
 
-  for group, hl in pairs(theme) do
-    vim.api.nvim_set_hl(0, group, hl)
+  for target, spec in pairs(theme.spec) do
+    vim.api.nvim_set_hl(0, target, spec.hl)
+    if spec.links then
+      for _, group in ipairs(spec.links) do
+        vim.api.nvim_set_hl(0, group, { link = target })
+      end
+    end
   end
 end
 
