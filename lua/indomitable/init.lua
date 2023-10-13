@@ -1,4 +1,5 @@
 local theme = require('indomitable.theme')
+require('indomitable.rust').load(theme)
 local M = {}
 
 function M.load()
