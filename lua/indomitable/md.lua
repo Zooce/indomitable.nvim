@@ -17,20 +17,25 @@ function M.load(theme)
       '@markup.heading.6.marker.markdown',
     },
     Function = {
+      '@markup.quote.markdown',
+      '@markup.italic.markdown_inline',
+      '@markup.strong.markdown_inline',
+    },
+    String = {
       '@markup.link.markdown_inline',
       '@markup.link.label.markdown_inline',
       '@markup.link.label.markdown',
-    },
-    String = {
-      '@markup.link.url.markdown_inline',
-      '@markup.link.url.markdown',
     },
     Constant = {
       '@markup.raw.markdown_inline',
       '@markup.raw.block.markdown',
     },
     Comment = {
-      '@markup.quote.markdown'
+      '@markup.link.url.markdown_inline',
+      '@markup.link.url.markdown',
+    },
+    Punctuation = {
+      '@markup.list.markdown',
     },
   })
 end
