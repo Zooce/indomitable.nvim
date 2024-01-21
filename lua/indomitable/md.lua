@@ -20,6 +20,9 @@ function M.load(theme)
       '@markup.link.markdown_inline',
       '@markup.link.label.markdown_inline',
     },
+    String = {
+      '@markup.link.url.markdown_inline',
+    },
     Comment = {
       '@text.reference.markdown',
       '@text.reference.markdown_inline',
