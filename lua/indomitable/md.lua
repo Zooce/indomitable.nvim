@@ -36,6 +36,8 @@ function M.load(theme)
     },
     Punctuation = {
       '@markup.list.markdown',
+      '@markup.raw.delimiter.markdown',
+      '@markup.raw.delimiter.markdown_inline',
     },
   })
 end
