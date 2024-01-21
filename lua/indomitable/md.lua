@@ -19,9 +19,11 @@ function M.load(theme)
     Function = {
       '@markup.link.markdown_inline',
       '@markup.link.label.markdown_inline',
+      '@markup.link.label.markdown',
     },
     String = {
       '@markup.link.url.markdown_inline',
+      '@markup.link.url.markdown',
     },
     Comment = {
       '@text.reference.markdown',
