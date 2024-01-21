@@ -16,6 +16,10 @@ function M.load(theme)
       '@markup.heading.5.marker.markdown',
       '@markup.heading.6.marker.markdown',
     },
+    Function = {
+      '@markup.link.markdown_inline',
+      '@markup.link.label.markdown_inline',
+    },
     Comment = {
       '@text.reference.markdown',
       '@text.reference.markdown_inline',
