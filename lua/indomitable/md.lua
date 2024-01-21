@@ -25,9 +25,12 @@ function M.load(theme)
       '@markup.link.url.markdown_inline',
       '@markup.link.url.markdown',
     },
+    Constant = {
+      '@markup.raw.markdown_inline',
+      '@markup.raw.block.markdown',
+    },
     Comment = {
-      '@text.reference.markdown',
-      '@text.reference.markdown_inline',
+      '@markup.quote.markdown'
     },
   })
 end
