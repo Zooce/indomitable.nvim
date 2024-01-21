@@ -39,3 +39,17 @@ Here's how I have `indomitable.nvim` installed with lazy.nvim:
   end,
 }
 ```
+
+## Lualine Integration
+
+You should be able to get `nvim-lualine/lualine.nvim` integration like this in your lualine setup:
+
+```lua
+require('lualine').setup {
+  options = {
+    theme = 'indomitable',
+    -- your other options...
+  },
+  -- the rest of your lualine setup...
+}
+```
