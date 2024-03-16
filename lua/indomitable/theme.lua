@@ -95,6 +95,7 @@ M.spec = {
       '@constructor.lua',
       '@keyword.jsdoc',
       '@punctuation',
+      '@punctuation.special',
       '@tag.delimiter',
       '@conceal',
       'Conceal',
@@ -150,6 +151,7 @@ M.spec = {
     hl = { fg = palette.comments },
     links = {
       '@string.documentation',
+      '@lsp.mod.documentation',
     },
   },
   Special = {
