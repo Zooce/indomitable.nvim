@@ -15,6 +15,7 @@ function M.load(theme)
       '@markup.heading.4.marker.markdown',
       '@markup.heading.5.marker.markdown',
       '@markup.heading.6.marker.markdown',
+      '@markup.list.unchecked.markdown',
     },
     Function = {
       '@markup.quote.markdown',
@@ -25,6 +26,7 @@ function M.load(theme)
       '@markup.link.markdown_inline',
       '@markup.link.label.markdown_inline',
       '@markup.link.label.markdown',
+      '@markup.list.checked.markdown',
     },
     Constant = {
       '@markup.raw.markdown_inline',
