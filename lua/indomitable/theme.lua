@@ -60,8 +60,10 @@ M.spec = {
   Folded = { hl = { bg = palette.punctuation_dimmer } },
   WarningMsg = { hl = { fg = palette.deleted } },
   DiffAdd = { hl = { fg = palette.inserted, } },
+  Added = { hl = { fg = palette.inserted } },
   DiffChange = { hl = { fg = palette.changed, } },
   DiffDelete = { hl = { fg = palette.deleted, } },
+  Removed = { hl = { fg = palette.deleted, } },
   DiffText = { hl = { fg = palette.foreground, } },
   Pmenu = {
     hl = { fg = palette.foreground },
