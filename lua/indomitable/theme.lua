@@ -101,6 +101,7 @@ M.spec = {
       '@tag.delimiter',
       '@conceal',
       'Conceal',
+      '@string.special.path.diff',
     },
   },
   Statement = {
