@@ -200,3 +200,5 @@ function M.load_links(links_table)
 end
 
 return M
+
+-- vim: ts=2 sts=2 sw=2 et
