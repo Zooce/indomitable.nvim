@@ -118,10 +118,7 @@ M.spec = {
       -- '@lsp.type.type.zig',
       '@tag',
       '@type.builtin',
-      -- '@type.css',
-      -- '@type.definition.css', -- FIXME: this should be linked to 'Special' but css highlighting isn't very good
       '@type.qualifier',
-      -- '@type.scss',
       'PreProc',
       'StorageClass',
     },
