@@ -105,6 +105,8 @@ M.spec = {
       '@conceal',
       'Conceal',
       '@string.special.path.diff',
+      'htmlTag',
+      'htmlEndTag',
     },
   },
   Statement = {
@@ -121,6 +123,7 @@ M.spec = {
       '@type.qualifier',
       'PreProc',
       'StorageClass',
+      'htmlTagName',
     },
   },
   Function = {
@@ -130,6 +133,7 @@ M.spec = {
       '@function.builtin',
       '@function.call',
       '@tag.attribute',
+      'htmlArg',
     },
   },
   String = {
