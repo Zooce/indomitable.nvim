@@ -124,6 +124,7 @@ M.spec = {
       'PreProc',
       'StorageClass',
       'htmlTagName',
+      'htmlTagN',
     },
   },
   Function = {
