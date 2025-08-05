@@ -1,21 +1,21 @@
-local theme = require('indomitable.theme')
-require('indomitable.ini').load(theme)
-require('indomitable.md').load(theme)
-require('indomitable.rust').load(theme)
-require('indomitable.toml').load(theme)
-require('indomitable.json').load(theme)
-require('indomitable.css').load(theme)
-require('indomitable.angular').load(theme)
+local theme = require("indomitable.theme")
+require("indomitable.ini").load(theme)
+require("indomitable.md").load(theme)
+require("indomitable.rust").load(theme)
+require("indomitable.toml").load(theme)
+require("indomitable.json").load(theme)
+require("indomitable.css").load(theme)
+require("indomitable.angular").load(theme)
 
 local M = {}
 
 function M.load()
   vim.o.termguicolors = true
   if vim.g.colors_name then
-    vim.cmd [[hi clear]]
+    vim.cmd([[hi clear]])
   end
-  vim.o.background = 'dark'
-  vim.g.colors_name = 'indomitable'
+  vim.o.background = "dark"
+  vim.g.colors_name = "indomitable"
 
   for target, spec in pairs(theme.spec) do
     vim.api.nvim_set_hl(0, target, spec.hl)
@@ -28,5 +28,3 @@ function M.load()
 end
 
 return M
-
--- vim: ts=2 sts=2 sw=2 et
