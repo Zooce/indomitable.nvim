@@ -6,6 +6,7 @@ require("indomitable.toml").load(theme)
 require("indomitable.json").load(theme)
 require("indomitable.css").load(theme)
 require("indomitable.angular").load(theme)
+require("indomitable.cs").load(theme)
 
 local M = {}
 
