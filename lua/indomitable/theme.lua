@@ -55,7 +55,7 @@ M.spec = {
   LineNr = { hl = { fg = palette.punctuation_dim } },
   Visual = { hl = { bg = palette.selection } },
   VisualNC = { hl = { bg = palette.selection_dim } },
-  MatchParen = { hl = { fg = palette.line_highlight, bg = palette.inserted, sp = palette.inserted, bold = true, underline = true, reverse = true, standout = true } },
+  MatchParen = { hl = { fg = palette.inserted, bg = palette.line_highlight, sp = palette.inserted, bold = true } },
   StatusLine = { hl = { fg = 'White', bg = palette.punctuation_dimmer } },
   Folded = { hl = { bg = palette.punctuation_dimmer } },
   ErrorMsg = { hl = { fg = palette.deleted } },
@@ -163,7 +163,7 @@ M.spec = {
     },
   },
   Special = {
-    hl = { fg = palette.other },
+    hl = { fg = palette.other, underline = false },
     links = {
       '@constant',
       '@markup.heading.1.delimiter.vimdoc',
@@ -196,7 +196,7 @@ function M.insert_links(group, links)
     end
     load(M.spec[group].links, links)
   else
-    vim.api.nvim_err_writeln('Highlight group ' .. group .. ' does not exist')
+    vim.api.nvim_echo('Highlight group ' .. group .. ' does not exist', true, { err = true })
   end
 end
 
@@ -207,5 +207,3 @@ function M.load_links(links_table)
 end
 
 return M
-
--- vim: ts=2 sts=2 sw=2 et

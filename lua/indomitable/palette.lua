@@ -25,5 +25,3 @@ return {
   punctuation_dim = "#555555",
   punctuation_dimmer = "#333333",
 }
-
--- vim: ts=2 sts=2 sw=2 et
