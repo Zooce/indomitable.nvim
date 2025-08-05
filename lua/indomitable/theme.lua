@@ -166,6 +166,8 @@ M.spec = {
     hl = { fg = palette.other },
     links = {
       '@constant',
+      '@markup.heading.1.delimiter.vimdoc',
+      '@markup.heading.2.delimiter.vimdoc',
       -- '@lsp.type.builtin.zig',
       '@lsp.typemod.variable.constant',
       -- '@lsp.mod.readonly',
